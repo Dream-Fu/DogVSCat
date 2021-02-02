@@ -10,7 +10,7 @@ class DogCat(data.Dataset):
         # data/train/cat.100.jpg
         # data/test/100.jpg
         self.imgs = [os.path.join(root, img) for img in os.listdir(root)]
-
+        self.imgs = sorted(self.imgs, key=lambda x: int(x.split('.')[-2]))
         if trainform is None:
             self.normalize = T.Normalize(mean=[0.5, 0.5, 0.5],
                                     std=[0.5, 0.5, 0.5])
@@ -27,7 +27,7 @@ class DogCat(data.Dataset):
         # data/train/cat.100.jpg
         img_path = self.imgs[item]
         # print(img_path)
-        #data/train/cat
+        # data/train/cat
         label = 1 if 'dog' in img_path.split('/')[-1] else 0
 
         data = Image.open(img_path)
