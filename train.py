@@ -29,7 +29,7 @@ parser.add_argument('--n_cpu', type=int, default=4, help='number of cpu threads 
 # 暂停设置
 parser.add_argument('--resume', type=str, default=None, help='path to resume weights file')
 # 迭代次数
-parser.add_argument('--epochs', type=int, default=1, help='number of epochs')
+parser.add_argument('--epochs', type=int, default=5, help='number of epochs')
 # 起始次数（针对resume设置）
 parser.add_argument('--start_epoch', type=int, default=0, help='number of start epoch')
 # 显示结果的间隔
@@ -42,7 +42,7 @@ device = t.device('cuda' if t.cuda.is_available() else 'cpu')
 if __name__ == '__main__':
 
     train_dataset = DogCat(opt.train_path, train=True, test=False)
-    val_dataset = DogCat(opt.train_path, Train=False, test=False)
+    val_dataset = DogCat(opt.train_path, train=False, test=False)
     train_loader = DataLoader(train_dataset, batch_size=opt.batch_size, shuffle=True, num_workers=opt.n_cpu)
     val_loader = DataLoader(val_dataset, batch_size=opt.batch_size, shuffle=True, num_workers=opt.n_cpu)
     if opt.model == 'resnet':
@@ -92,7 +92,7 @@ if __name__ == '__main__':
         if is_lowest_loss:
             lowest_path = os.path.join(opt.checkpoint_dir, 'lowest_loss.pth')
             shutil.copyfile(save_path, lowest_path)
-            
+
 
 
 
