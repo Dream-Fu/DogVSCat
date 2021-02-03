@@ -7,6 +7,7 @@ from models.resnet import ResNet34
 from torch import optim
 import torch.nn as nn
 import os
+import shutil
 
 parser = argparse.ArgumentParser()
 # 数据集路径
@@ -39,12 +40,11 @@ opt = parser.parse_args()
 device = t.device('cuda' if t.cuda.is_available() else 'cpu')
 
 if __name__ == '__main__':
-    # 创建存储及日志文件
-    # if not os.path.exists(opt.checkpoint_dir + 'record.txt'):
-    #     utils.creatdir(opt.checkpoint_dir, 'record.txt')
-    # 获取图片路径，并划分训练集、测试集
-    dataset = DogCat(opt.train_path)
-    train_loader = DataLoader(dataset, batch_size=opt.batch_size, shuffle=True, num_workers=opt.n_cpu)
+
+    train_dataset = DogCat(opt.train_path, train=True, test=False)
+    val_dataset = DogCat(opt.train_path, Train=False, test=False)
+    train_loader = DataLoader(train_dataset, batch_size=opt.batch_size, shuffle=True, num_workers=opt.n_cpu)
+    val_loader = DataLoader(val_dataset, batch_size=opt.batch_size, shuffle=True, num_workers=opt.n_cpu)
     if opt.model == 'resnet':
         model = ResNet34()
 
@@ -54,9 +54,45 @@ if __name__ == '__main__':
 
     criterion = nn.CrossEntropyLoss()
 
+    best_precision = 0
+    lowest_loss = 10000
     for epoch in range(opt.epochs):
                                             # (train_loader, model, criterion, optimizer, epoch, print_interval, filename):
         acc_train, loss_train = utils.train(train_loader, model, criterion, optimizer, epoch, opt.print_interval, opt.checkpoint_dir)
-
-
+        # 在日志文件中记录每个epoch的训练精度和损失
+        with open(opt.checkpoint_dir+'each_epoch_record.txt', 'a') as acc_file:
+            acc_file.write('Epoch: %2d, train_Precision: %.8f, train_Loss: %.8f\n' % (epoch, acc_train, loss_train))
         # 测试
+        precision, avg_loss = utils.validate(val_loader, model, criterion, optimizer, epoch, opt.print_interval, opt.checkpoint_dir)
+        # 在日志文件中记录每个epoch的验证精度和损失
+        with open(opt.checkpoint_dir + 'each_epoch_record_val.txt', 'a') as acc_file:
+            acc_file.write('Epoch: %2d, Precision: %.8f, Loss: %.8f\n' % (epoch, precision, avg_loss))
+            pass
+
+        # 记录最高精度与最低loss
+        best_precision = max(precision, best_precision)
+        lowest_loss = min(avg_loss, lowest_loss)
+        print('--' * 30)
+        print(' * Accuray {acc:.3f}'.format(acc=precision),
+              '(Previous Best Acc: %.3f)' % best_precision,
+              ' * Loss {loss:.3f}'.format(loss=avg_loss),
+              'Previous Lowest Loss: %.3f)' % lowest_loss)
+        print('--' * 30)
+        # 保存最新模型
+        save_path = os.path.join(opt.checkpoint_dir, 'checkpoint.pth')
+        t.save(model.state_dict(), save_path)
+        # 保存准确率最高的模型
+        is_best = precision > best_precision
+        is_lowest_loss = avg_loss < lowest_loss
+
+        if is_best:
+            best_path = os.path.join(opt.checkpoint_dir, 'best_model.pth')
+            shutil.copyfile(save_path, best_path)
+        # 保存损失最低的模型
+        if is_lowest_loss:
+            lowest_path = os.path.join(opt.checkpoint_dir, 'lowest_loss.pth')
+            shutil.copyfile(save_path, lowest_path)
+            
+
+
+

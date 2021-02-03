@@ -5,12 +5,22 @@ from PIL import Image
 
 
 class DogCat(data.Dataset):
-    def __init__(self, root, trainform=None):
+    def __init__(self, root, trainform=None, train=True, test=False):
         super(DogCat, self).__init__()
         # data/train/cat.100.jpg
         # data/test/100.jpg
         self.imgs = [os.path.join(root, img) for img in os.listdir(root)]
-        self.imgs = sorted(self.imgs, key=lambda x: int(x.split('.')[-2]))
+        len_num = len(self.imgs)
+        if train:
+            imgs = sorted(self.imgs, key=lambda x: int(x.split('.')[-2]))
+            self.imgs = imgs[:int(0.7 * len_num)]
+        elif test:
+            imgs = sorted(self.imgs, key=lambda x: int(x.split('/')[-1]))
+            self.imgs = imgs
+        else: # val
+            imgs = sorted(self.imgs, key=lambda x: int(x.split('.')[-2]))
+            self.imgs = imgs[int(0.7 * len_num):]
+
         if trainform is None:
             self.normalize = T.Normalize(mean=[0.5, 0.5, 0.5],
                                     std=[0.5, 0.5, 0.5])

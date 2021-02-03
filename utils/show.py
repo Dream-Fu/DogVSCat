@@ -3,15 +3,16 @@ import numpy as np
 
 if __name__ == '__main__':
 
-    train_file = open("../checkpoint/record_iter_train.txt", 'r')
+    train_file = open("../checkpoint/record_iter_train_1.txt", 'r')
     train_total = train_file.readlines()
-    train_num = len(train_total)
-    train_res = np.zeros(train_num)
+    train_num = len(train_total)//50
+    # train_res = np.zeros(train_num)
     train_idx = np.arange(train_num)
     acc_list = []
     loss_list = []
 
     for idx in range(train_num):
+        idx *= 50
         train_str = train_total[idx].split(',')
         train_acc = float(train_str[0].split(':')[-1])
         acc_list.append(train_acc)
@@ -22,12 +23,12 @@ if __name__ == '__main__':
     plt.title('train_acc')
     plt.plot(train_idx, acc_list)
     # plt.legend('batch')
-    plt.savefig('acc.png')
+    plt.savefig('acc1.png')
     plt.show()
 
     plt.figure()
     plt.title('train_loss')
     plt.plot(train_idx, loss_list)
-    plt.savefig('loss.png')
+    plt.savefig('loss1.png')
     plt.show()
 

@@ -3,9 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="58da7a04-ef5e-441f-b089-c0e1480e1e05" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/record_iter_train.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/acc.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/loss.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/CatVSDog.py" beforeDir="false" afterPath="$PROJECT_DIR$/datasets/CatVSDog.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/show.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/show.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +35,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/utils" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -51,7 +52,7 @@
       <recent name="E:\CatVSDog\models" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.train">
+  <component name="RunManager" selected="Python.show">
     <configuration name="CatVSDog" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="CatVSDog" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -164,8 +165,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.train" />
         <item itemvalue="Python.show" />
+        <item itemvalue="Python.train" />
         <item itemvalue="Python.CatVSDog" />
         <item itemvalue="Python.resnet" />
         <item itemvalue="Python.basicnet" />
@@ -190,6 +191,8 @@
       <workItem from="1612183050817" duration="3014000" />
       <workItem from="1612239766597" duration="14907000" />
       <workItem from="1612265673336" duration="7320000" />
+      <workItem from="1612282355662" duration="907000" />
+      <workItem from="1612321968212" duration="3486000" />
     </task>
     <servers />
   </component>
@@ -197,22 +200,22 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="724" height="198" key="GridCell.Tab.0.bottom" timestamp="1612273858833">
+    <state width="934" height="198" key="GridCell.Tab.0.bottom" timestamp="1612283262553">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="724" height="198" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1612273858833" />
-    <state width="724" height="198" key="GridCell.Tab.0.center" timestamp="1612273858833">
+    <state width="934" height="198" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1612283262553" />
+    <state width="934" height="198" key="GridCell.Tab.0.center" timestamp="1612283262553">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="724" height="198" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1612273858833" />
-    <state width="724" height="198" key="GridCell.Tab.0.left" timestamp="1612273858833">
+    <state width="934" height="198" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1612283262553" />
+    <state width="934" height="198" key="GridCell.Tab.0.left" timestamp="1612283262553">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="724" height="198" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1612273858833" />
-    <state width="724" height="198" key="GridCell.Tab.0.right" timestamp="1612273858833">
+    <state width="934" height="198" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1612283262553" />
+    <state width="934" height="198" key="GridCell.Tab.0.right" timestamp="1612283262553">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="724" height="198" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1612273858833" />
+    <state width="934" height="198" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1612283262553" />
     <state width="723" height="261" key="GridCell.Tab.1.bottom" timestamp="1612263935708">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -229,10 +232,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="723" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1612263935708" />
-    <state x="-6" y="0" width="781" height="830" key="dock-window-1" timestamp="1612267277095">
+    <state x="-6" y="0" width="781" height="830" key="dock-window-1" timestamp="1612323578296">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="-6" y="0" width="781" height="830" key="dock-window-1/0.0.1536.824@0.0.1536.824" timestamp="1612267277095" />
+    <state x="-6" y="0" width="781" height="830" key="dock-window-1/0.0.1536.824@0.0.1536.824" timestamp="1612323578296" />
     <state x="707" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1612267331450">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -240,9 +243,9 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/CatVSDog$basicnet.coverage" NAME="basicnet Coverage Results" MODIFIED="1612107236611" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models" />
-    <SUITE FILE_PATH="coverage/CatVSDog$train.coverage" NAME="train Coverage Results" MODIFIED="1612273785122" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CatVSDog$train.coverage" NAME="train Coverage Results" MODIFIED="1612282445032" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/CatVSDog$Expression.coverage" NAME="Expression Coverage Results" MODIFIED="1612080282153" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/datasets" />
-    <SUITE FILE_PATH="coverage/CatVSDog$show.coverage" NAME="show Coverage Results" MODIFIED="1612270738954" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
+    <SUITE FILE_PATH="coverage/CatVSDog$show.coverage" NAME="show Coverage Results" MODIFIED="1612282892322" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
     <SUITE FILE_PATH="coverage/CatVSDog$resnet.coverage" NAME="resnet Coverage Results" MODIFIED="1612259786392" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models" />
     <SUITE FILE_PATH="coverage/CatVSDog$CatVSDog.coverage" NAME="CatVSDog Coverage Results" MODIFIED="1612267337927" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/datasets" />
   </component>
